@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,61 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+
+    /* Transition for menu and overlay */
+    #dropdown-menu,
+    #overlay {
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Hide the menu and overlay by default */
+    #dropdown-menu.hidden,
+    #overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Style the overlay */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
   </style>
 </head>
+
 <body class="bg-gray-100 text-gray-800">
 
+  <!-- Overlay -->
+  <div id="overlay" class="hidden"></div>
+
   <!-- Navbar -->
-  <header class="bg-blue-600 text-white py-4 shadow-md">
+  <header class="bg-blue-600 text-white py-4 shadow-md relative z-20">
     <div class="container mx-auto flex justify-between items-center px-6">
       <h1 class="text-2xl font-bold">Hacktoberfest24</h1>
-      <nav>
-        <a href="index.html" class="text-white hover:underline mx-4">Home</a>
-        <a href="index.html#projects" class="text-white hover:underline mx-4">Projects</a>
+      <button id="menu-btn" class="relative block md:hidden text-white focus:outline-none z-30">
+        <!-- Hamburger Icon (3 lines) -->
+        <div class="space-y-1">
+          <span class="block w-6 h-1 bg-white transition transform duration-300"></span>
+          <span class="block w-6 h-1 bg-white transition transform duration-300"></span>
+          <span class="block w-6 h-1 bg-white transition transform duration-300"></span>
+        </div>
+      </button>
+      <nav class="hidden md:flex space-x-4">
+        <a href="index.html" class="text-white hover:underline">Home</a>
+        <a href="index.html#projects" class="text-white hover:underline">Projects</a>
       </nav>
+    </div>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div id="dropdown-menu"
+      class="hidden md:hidden bg-blue-600 text-white space-y-2 mt-2 px-6 py-4 absolute w-full left-0 top-full">
+      <a href="index.html" class="block text-white hover:underline">Home</a>
+      <a href="index.html#projects" class="block text-white hover:underline">Projects</a>
     </div>
   </header>
 
@@ -30,7 +74,9 @@
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold text-blue-600">About Hacktoberfest24</h2>
       <p class="text-gray-600 text-lg mt-6 mx-auto max-w-4xl">
-        Hacktoberfest24 is an open-source initiative aimed at encouraging developers of all skill levels to contribute to open-source projects. Our goal is to foster collaboration, innovation, and community growth through meaningful contributions to open-source software.
+        Hacktoberfest24 is an open-source initiative aimed at encouraging developers of all skill levels to contribute
+        to open-source projects. Our goal is to foster collaboration, innovation, and community growth through
+        meaningful contributions to open-source software.
       </p>
     </div>
   </section>
@@ -43,56 +89,27 @@
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-xl font-bold mb-2">Promote Open-Source</h4>
           <p class="text-gray-600">
-            We believe in the power of open-source software to bring people together and create impactful projects that benefit everyone.
+            We believe in the power of open-source software to bring people together and create impactful projects that
+            benefit everyone.
           </p>
         </div>
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-xl font-bold mb-2">Encourage Collaboration</h4>
           <p class="text-gray-600">
-            Hacktoberfest24 encourages developers from all over the world to collaborate, share knowledge, and work on innovative solutions.
+            Hacktoberfest24 encourages developers from all over the world to collaborate, share knowledge, and work on
+            innovative solutions.
           </p>
         </div>
         <div class="bg-white rounded-lg shadow-md p-6">
           <h4 class="text-xl font-bold mb-2">Learn and Grow</h4>
           <p class="text-gray-600">
-            Our goal is to provide an environment where developers can learn from each other, enhance their coding skills, and contribute to real-world projects.
+            Our goal is to provide an environment where developers can learn from each other, enhance their coding
+            skills, and contribute to real-world projects.
           </p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Team Section -->
-<!--   <section class="bg-white py-12">
-    <div class="container mx-auto px-6 text-center">
-      <h3 class="text-3xl font-semibold text-blue-600">Meet the Team</h3>
-      <p class="text-gray-600 text-lg mt-4">
-        Hacktoberfest24 is powered by a passionate community of developers, contributors, and open-source enthusiasts.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-        <div class="bg-gray-100 rounded-lg p-6">
-          <img src="https://via.placeholder.com/150" alt="Contributor 1" class="rounded-full mx-auto mb-4">
-          <h4 class="text-xl font-bold">Contributor 1</h4>
-          <p class="text-gray-600">Lead Developer</p>
-        </div>
-        <div class="bg-gray-100 rounded-lg p-6">
-          <img src="https://via.placeholder.com/150" alt="Contributor 2" class="rounded-full mx-auto mb-4">
-          <h4 class="text-xl font-bold">Contributor 2</h4>
-          <p class="text-gray-600">UI/UX Designer</p>
-        </div>
-        <div class="bg-gray-100 rounded-lg p-6">
-          <img src="https://via.placeholder.com/150" alt="Contributor 3" class="rounded-full mx-auto mb-4">
-          <h4 class="text-xl font-bold">Contributor 3</h4>
-          <p class="text-gray-600">Project Manager</p>
-        </div>
-        <div class="bg-gray-100 rounded-lg p-6">
-          <img src="https://via.placeholder.com/150" alt="Contributor 4" class="rounded-full mx-auto mb-4">
-          <h4 class="text-xl font-bold">Contributor 4</h4>
-          <p class="text-gray-600">Open Source Enthusiast</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white py-6 mt-12">
@@ -106,5 +123,39 @@
     </div>
   </footer>
 
+  <!-- Toggle Menu Script -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const overlay = document.getElementById('overlay');
+
+    // Hamburger icon lines
+    const lines = menuBtn.querySelectorAll('span');
+
+    menuBtn.addEventListener('click', () => {
+      dropdownMenu.classList.toggle('hidden');
+      overlay.classList.toggle('hidden');
+
+      // Animate hamburger icon to X when menu is open
+      lines[0].classList.toggle('rotate-45');
+      lines[0].classList.toggle('translate-y-2');
+      lines[1].classList.toggle('opacity-0');
+      lines[2].classList.toggle('-rotate-45');
+      lines[2].classList.toggle('-translate-y-2');
+    });
+
+    // Close the menu if overlay is clicked
+    overlay.addEventListener('click', () => {
+      dropdownMenu.classList.add('hidden');
+      overlay.classList.add('hidden');
+
+      // Reset hamburger icon
+      lines[0].classList.remove('rotate-45', 'translate-y-2');
+      lines[1].classList.remove('opacity-0');
+      lines[2].classList.remove('-rotate-45', '-translate-y-2');
+    });
+  </script>
+
 </body>
+
 </html>
